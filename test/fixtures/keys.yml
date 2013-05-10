@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sp: MyString
+  public_key_modulus: MyString
+  public_key_exponent: MyString
+  private_key_modulus: MyString
+  private_key_exponent: MyString
+
+two:
+  sp: MyString
+  public_key_modulus: MyString
+  public_key_exponent: MyString
+  private_key_modulus: MyString
+  private_key_exponent: MyString
