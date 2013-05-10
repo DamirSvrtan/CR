@@ -4,6 +4,7 @@ CR::Application.routes.draw do
   match '/posts',  to: 'home#posts'
   match '/register_new_sp', to: 'home#register_new_sp'
   match '/register_posts', to: 'home#register_posts'
+  match '/certificate', to: 'home#certificate'
 
   root to: 'home#home'
 

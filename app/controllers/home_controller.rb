@@ -25,7 +25,8 @@ require 'open-uri'
 		if !params[:name].nil? && !params[:adress].nil?
 			if ServiceProvider.find_by_name(params[:name]).nil?
 				ServiceProvider.create(:name => params[:name], :adress => params[:adress])
-				render :json => {:status => "Registered Successfully!" }
+				crKey = Key.first
+				render :json => {:status => "Registered Successfully!", :public_key_modulus => crKey.public_key_modulus, :public_key_exponent => crKey.public_key_exponent }
 			else
 				render :json => {:status => "Already Registered!"}
 			end	
@@ -44,6 +45,10 @@ require 'open-uri'
 		end
         end
 
+	def certificate
+		certificate = Key.certificate
+		render :json => {:certificate => Base64.encode64(certificate) }
+        end
 	def home
 	end
 end
