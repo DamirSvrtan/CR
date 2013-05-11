@@ -46,7 +46,7 @@ require 'open-uri'
         end
 
 	def certificate
-		certificate = Key.certificate
+		certificate = Key.certificate(params[:sp])
 		render :json => {:certificate => Base64.encode64(certificate) }
         end
 	def home

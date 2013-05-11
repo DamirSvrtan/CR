@@ -30,11 +30,11 @@ require 'rsa'
 	end
   end
 
-  def self.certificate
+  def self.certificate(sp)
 	key = Key.find_by_sp("CR")
 	private = RSA::Key.new(key.private_key_modulus, key.private_key_exponent)
 	new_key = RSA::KeyPair.new(private, nil)
-	cipherdata = new_key.decrypt("HELLO WORLD")
+	cipherdata = new_key.decrypt(sp)
   end
 
   def self.decryptCertificate(cipherdata)
