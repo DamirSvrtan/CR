@@ -7,6 +7,10 @@ class Post < ActiveRecord::Base
 	self.service_provider.name
   end
 
+  def service_provider_adress
+	self.service_provider.adress
+  end
+
   def self.save_multiple_posts(sp,params)
 	number_of_posts = params[:name].count
 	number_of_created_posts=0

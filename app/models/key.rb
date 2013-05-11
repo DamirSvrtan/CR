@@ -30,14 +30,16 @@ require 'rsa'
 	end
   end
 
-  def self.certificate(sp)
+  def self.generate_certificate(sp)
 	key = Key.find_by_sp("CR")
 	private = RSA::Key.new(key.private_key_modulus, key.private_key_exponent)
 	new_key = RSA::KeyPair.new(private, nil)
 	cipherdata = new_key.decrypt(sp)
+	Base64.encode64(cipherdata)
   end
 
   def self.decryptCertificate(cipherdata)
+	cipherdata = Base64.encode64(cipherdata)
 	key = Key.find_by_sp("CR")
 	public = RSA::Key.new(key.public_key_modulus, key.public_key_exponent)
 	new_key = RSA::KeyPair.new(nil, public)

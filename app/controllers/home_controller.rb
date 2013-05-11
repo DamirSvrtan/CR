@@ -17,7 +17,7 @@ require 'open-uri'
 		else					
 			@posts = Post.all
 		end
-		render :json => @posts, :methods => :service_provider_name
+		render :json => @posts, :methods => [:service_provider_name, :service_provider_adress]
 	end
 
 	def register_new_sp
@@ -46,8 +46,8 @@ require 'open-uri'
         end
 
 	def certificate
-		certificate = Key.certificate(params[:sp])
-		render :json => {:certificate => Base64.encode64(certificate) }
+		certificate = Key.generate_certificate(params[:sp])
+		render :json => {:certificate => certificate }
         end
 	def home
 	end
